@@ -17,7 +17,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/login",
+        "https://lms-14j9.onrender.com/auth/login",
         { email, password },
         { withCredentials: true }
       );

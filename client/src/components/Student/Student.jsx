@@ -17,7 +17,9 @@ const Student = () => {
   };
   const checkStudentId = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/student/${studentId}`);
+      const res = await axios.get(
+        `https://lms-14j9.onrender.com/student/${studentId}`
+      );
       console.log("Student data from backend:", res.data.student);
 
       if (res.data.valid && res.data.student) {
@@ -310,7 +312,7 @@ const Student = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:5000/student/register",
+        "https://lms-14j9.onrender.com/student/register",
         formData,
         {
           headers: {
