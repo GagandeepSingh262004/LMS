@@ -10,7 +10,7 @@ const Home = () => {
   const getAllStudents = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/student/getAllStudents"
+        "https://lms-14j9.onrender.com/student/getAllStudents"
       );
       setAllStudents(response.data); // ✅ Only set the data array
       console.log("Fetched students:", response.data);
