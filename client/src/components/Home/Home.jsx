@@ -12,7 +12,7 @@ const Home = () => {
       const response = await axios.get(
         "https://lms-14j9.onrender.com/student/getAllStudents"
       );
-      setAllStudents(response.data); // ✅ Only set the data array
+      setAllStudents(response.data);
       console.log("Fetched students:", response.data);
     } catch (error) {
       console.log("Error fetching students:", error);
@@ -56,38 +56,42 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg overflow-x-auto p-4">
-          <table className="min-w-full text-sm text-left text-gray-600">
-            <thead className="text-xs uppercase bg-gray-100 text-gray-700">
-              <tr>
-                <th className="px-6 py-3">Student Name</th>
-                <th className="px-6 py-3">Roll Number</th>
-                <th className="px-6 py-3">Course Opted</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allStudents.length > 0 ? (
-                allStudents.map((student, index) => (
-                  <tr
-                    key={index}
-                    className="bg-white border-b hover:bg-gray-50"
-                  >
-                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                      {student.fullName}
-                    </td>
-                    <td className="px-6 py-4">{student.studentId}</td>
-                    <td className="px-6 py-4">{student.courseName}</td>
-                  </tr>
-                ))
-              ) : (
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm text-left text-gray-600">
+              <thead className="text-xs uppercase bg-gray-100 text-gray-700">
                 <tr>
-                  <td colSpan="3" className="text-center py-4">
-                    No students found.
-                  </td>
+                  <th className="px-4 sm:px-6 py-3">Student Name</th>
+                  <th className="px-4 sm:px-6 py-3">Roll Number</th>
+                  <th className="px-4 sm:px-6 py-3">Course Opted</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {allStudents.length > 0 ? (
+                  allStudents.map((student, index) => (
+                    <tr
+                      key={index}
+                      className="bg-white border-b hover:bg-gray-50 transition"
+                    >
+                      <td className="px-4 sm:px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {student.fullName}
+                      </td>
+                      <td className="px-4 sm:px-6 py-4">{student.studentId}</td>
+                      <td className="px-4 sm:px-6 py-4">
+                        {student.courseName}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="3" className="text-center py-4 text-gray-500">
+                      No students found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
