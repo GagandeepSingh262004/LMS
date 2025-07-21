@@ -6,7 +6,7 @@ const Student = () => {
   const printRef = useRef();
   const [previewUrl, setPreviewUrl] = useState("");
   const [studentExists, setStudentExists] = useState(false);
-
+  const [studentIdExist, setStudentIdExists] = useState("");
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
     if (selected) {
@@ -18,7 +18,7 @@ const Student = () => {
   const checkStudentId = async () => {
     try {
       const res = await axios.get(
-        `https://lms-14j9.onrender.com/student/${studentId}`
+        `https://lms-14j9.onrender.com/student/${studentIdExist}`
       );
       console.log("Student data from backend:", res.data.student);
 
@@ -202,6 +202,7 @@ const Student = () => {
   //     discountAmount,
   //   };
   // };
+
   const generateFeeDetails = () => {
     let fees = 0;
     let registration = 0;
@@ -425,8 +426,8 @@ const Student = () => {
                 </label>
                 <input
                   type="text"
-                  value={studentId}
-                  onChange={(e) => setStudentId(e.target.value)}
+                  value={studentIdExist}
+                  onChange={(e) => setStudentIdExists(e.target.value)}
                   placeholder="Enter student ID e.g., BCA250123"
                   className="w-full border border-gray-300 rounded-md px-4 h-10 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                 />
