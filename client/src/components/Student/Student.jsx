@@ -351,16 +351,6 @@ const Student = () => {
     }
   };
 
-  const handlePrint = () => {
-    const printContents = printRef.current.innerHTML;
-    const printWindow = window.open("", "", "height=600,width=800");
-
-    printWindow.document.close();
-    printWindow.focus();
-    printWindow.print();
-    // printWindow.close();
-  };
-
   return (
     <div className="flex flex-col md:flex-row h-screen overflow-auto bg-[#EFF1F8]">
       {/* Sidebar */}
@@ -824,13 +814,6 @@ const Student = () => {
                 className="bg-indigo-700 text-white px-6 py-2 rounded hover:bg-indigo-800 transition-all"
               >
                 Submit
-              </button>
-              <button
-                type="button"
-                className="bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700"
-                onClick={handlePrint}
-              >
-                Print
               </button>
             </div>
           </form>
