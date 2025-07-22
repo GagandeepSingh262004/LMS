@@ -51,8 +51,7 @@ const registerStudent = async (req, res) => {
     }
 
     const duplicate = await Student.findOne({
-      courseName,
-      courseDuration,
+      studentId,
     });
     if (duplicate) {
       return res.status(400).json({ message: "Student already registered" });
